@@ -3,21 +3,15 @@
 #include <xinu.h>
 #include <stdio.h>
 
+long host2net(long x);
 
 process	main(void)
 {
-	//kprintf("(Lopez, Emilio)\n");
-	//kprintf("lopez175\n");
-	recvclr();
-	resume(create(shell, 8192, 50, "shell", 1, CONSOLE));
-
-	// Wait for shell to exit and recreate it 
-
-	while (TRUE) {
-		receive();
-		sleepms(200);
-		kprintf("\n\nMain process recreating shell\n\n");
-		resume(create(shell, 4096, 20, "shell", 1, CONSOLE));
-	}
-	return OK;
+	
+	long x = 200;
+	kprintf("%d\n", x);
+	kprintf("0x%X\n", x);
+	long net =host2net(x);
+	kprintf("%d\n", net);
+	kprintf("0x%X\n", net);
 }
