@@ -41,3 +41,6 @@
 #include <stdio.h>
 #include <string.h>
 #include <onandon.h>
+#include <host2net.h>
+#include <host2netca.h>
+#include <host2neta.h>
