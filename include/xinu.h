@@ -44,3 +44,6 @@
 #include <host2net.h>
 #include <host2netca.h>
 #include <host2neta.h>
+#include <prnsegadd.h>
+#include <appl1.h>
+#include <fun1.h>

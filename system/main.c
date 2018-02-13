@@ -4,7 +4,7 @@
 
 process	main(void)
 {
-	/*Testing part 3 */
+	/*TESTING PART 3 */
 	long x = 200;
 	kprintf("%d\n", x);
 	kprintf("0x%X\n\n", x);
@@ -23,4 +23,19 @@ process	main(void)
 	net =host2neta(x);
         kprintf("%d\n", net);
         kprintf("0x%X\n\n", net);
+
+	/*TEST PART 4*/
+	struct	procent *prptr;		
+	prptr = &proctab[currpid];
+	char *ptrtop;
+	asm(	"movl   %%esp, %0;"
+		:"=r"(ptrtop)
+                :
+                :"%esp"
+	);
+	kprintf("1. main process before appl1():\n");
+	kprintf("Base of the stack : Address - 0x%08X, Value - 0x%08X\n",prptr->prstkbase, *(int *)(prptr->prstkbase));
+	kprintf("Top of the stack : Address - 0x%08X, Value - 0x%08X\n\n",ptrtop, *(int *)(ptrtop));
+	//kprintf("Stack size: %d\n",prptr->prstklen);
+	resume(create((int *)appl1, 2048, INITPRIO, "appl1", 0));	
 }
