@@ -36,9 +36,9 @@ process	main(void)
 	kprintf("1. main process before appl1():\n");
 	kprintf("Base of the stack : Address - 0x%08X, Value - 0x%08X\n",prptr->prstkbase, *(int *)(prptr->prstkbase));
 	kprintf("Top of the stack : Address - 0x%08X, Value - 0x%08X\n\n",ptrtop, *(int *)(ptrtop));
-	//kprintf("Stack size: %d\n",prptr->prstklen);
-	//part4print("1. main process before appl1():\n");
-	//resume(create((int *)appl1, 2048, INITPRIO, "appl1", 0));	
+	
+	//Should comment out for attacker's and victim's processes are adjacent.
+	resume(create((int *)appl1, 2048, INITPRIO, "appl1", 0));	
 
 	
 	/*PART 5*/
