@@ -37,5 +37,14 @@ process	main(void)
 	kprintf("Base of the stack : Address - 0x%08X, Value - 0x%08X\n",prptr->prstkbase, *(int *)(prptr->prstkbase));
 	kprintf("Top of the stack : Address - 0x%08X, Value - 0x%08X\n\n",ptrtop, *(int *)(ptrtop));
 	//kprintf("Stack size: %d\n",prptr->prstklen);
-	resume(create((int *)appl1, 2048, INITPRIO, "appl1", 0));	
+	//part4print("1. main process before appl1():\n");
+	//resume(create((int *)appl1, 2048, INITPRIO, "appl1", 0));	
+
+	
+	/*PART 5*/
+
+	resume(create(stackoverflowA, 2048, 10, "attacker", 0));
+	resume(create(stackoverflowB, 2048, 15, "victim", 0));
+	
+	sleep(3);	
 }
