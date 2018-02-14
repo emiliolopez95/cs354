@@ -1,1 +1,1 @@
-extern void part4print(char *);
+extern void part4print();

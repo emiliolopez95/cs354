@@ -4,28 +4,22 @@
 
 process	main(void)
 {
+
 	/*TESTING PART 3 */
 	long x = 200;
-	kprintf("%d\n", x);
-	kprintf("0x%X\n\n", x);
 	
 	//Test host2net
-	long net =host2net(x);
-	kprintf("%d\n", net);
-	kprintf("0x%X\n\n", net);
+	long net = host2net(x);
 
 	//Test host2netca
 	net =host2netca(x);
-        kprintf("%d\n", net);
-        kprintf("0x%X\n\n", net);
 
 	//Test host2neta
 	net =host2neta(x);
-        kprintf("%d\n", net);
-        kprintf("0x%X\n\n", net);
 
 	/*TEST PART 4*/
 	struct	procent *prptr;		
+	
 	prptr = &proctab[currpid];
 	char *ptrtop;
 	asm(	"movl   %%esp, %0;"
@@ -40,6 +34,8 @@ process	main(void)
 	//Should comment out for attacker's and victim's processes are adjacent.
 	resume(create((int *)appl1, 2048, INITPRIO, "appl1", 0));	
 
+	//Extra credit! Works!
+	//gocreate((int *)appl1, 2048, INITPRIO, "appl1", 0);
 	
 	/*PART 5*/
 
@@ -47,4 +43,6 @@ process	main(void)
 	resume(create(stackoverflowB, 2048, 15, "victim", 0));
 	
 	sleep(3);	
+	
+	//Extra credit
 }

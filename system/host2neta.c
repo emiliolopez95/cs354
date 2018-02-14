@@ -6,7 +6,6 @@ long host2neta(long x) {
 		"bswap	%1;"
 		"movl   %1, %%eax;"
 		"movl	%%eax, %0;"
-		"ret;"
 		:"=r"(m)
 		:"r"(x) 
 		:"%eax"
